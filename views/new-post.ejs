@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    
+    <title>New post page</title>
+</head>
+<body>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/create-new-post">Create post</a>
+        </li>
+      </ul>
+      
+
+   <form action="/submit-new-post" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="desc" placeholder="Description">
+    <button class="btn btn-success">add new post</button>
+
+</form> 
+<% if(err) { %>
+<p><%= err %></p>
+<% } %>
+</body>
+</html>

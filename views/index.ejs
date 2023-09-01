@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/create-new-post">Create post</a>
+        </li>
+      </ul>
+      
+<title>Mudassir Facebook</title>
+<style>
+    body {
+        width: 60%;
+        border: 5px blueviolet;
+        padding: 10px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+    }
+    
+    form {
+        margin: 8px;
+    }
+
+    h6 {
+        height: 40px;
+        background-color: gray;
+        box-shadow: 2px 2px blueviolet;
+        box-shadow: 2px 2px blueviolet;
+        padding: 10px;
+    }
+
+    .card-body {
+        margin: 10px;
+        border: 5px blueviolet;
+        gap: 1;
+        border: 5px blueviolet;
+    }
+</style>
+</head>
+
+<body>
+    <h1>Facebook</h1>
+    
+        <% if(post.length> 0) { %>
+            <% post.forEach(post=> { %>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+
+
+                        <a href=""></a>
+                        <button>
+
+                            <a href="/edit-post/<%= post._id%>"> Edit-post </a>
+                        </button>
+
+                        <h1>
+                            <%= post.title %>
+                        </h1>
+                        <h4>
+                            <%= post.desc %>
+                        </h4>
+                    </div>
+                </div>
+                <div>
+                    <form method="post" action="/add-comment/<%= post._id %>">
+                        <input name="comment" placeholder="comments">
+                        <button class="btn btn-secondary"> add comment</button>
+                    </form>
+                </div>
+                <div>
+                    <% if(post.comments.length> 0) { %>
+                        <% post.comments.forEach(comment=> { %>
+                            <div>
+                                <h5>
+                                    <%= comment.comment %>
+                                        <button>
+                                            <a href="/delete-comment/<%= comment._id %>">delete comment</a>
+                                        </button>
+                                </h5>
+
+                            </div>
+                            <% }) %>
+                                <% } %>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p>no post for now</p>
+                        <% } %>
+</body>
+
+</html>
